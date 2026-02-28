@@ -26,8 +26,22 @@ public class occurence {
         return x * pow(x, n-1);
 
     }
+    public static int optimisedPow(int x , int n){
+        if(n == 0){
+             return 1;
+        }
+        int halfPower = optimisedPow(x, n/2)
+        int halfPowerSq = halfPower * halfPower;
+
+        // n is odd
+        if(n%2 != 0){
+            halfPowerSq = x*halfPowerSq;
+        }
+
+        return halfPowerSq;
+    }
     public static void main(String[] args) {
         int arr[] = {8,3,6,9,5,10,2,5,3};
-        System.out.println(pow(2, 5));
+        System.out.println(optimisedPow(2, 5));
     }
 }
