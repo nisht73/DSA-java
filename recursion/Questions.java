@@ -20,16 +20,32 @@ public class Questions{
 
     NumToString(nums, number, i+1);
    }
+
+
    public static int length(String str, int i){
     if(i == str.length()){
         return 0 ;
     }
     return 1 + length(str, i+1);
    }
+
+   public static void TOH(int n, String src, String helper, String dest){
+
+    if(n ==1){
+     System.out.println("transfer disk " + n + " from " + src + " to " + dest);
+     return; 
+    }
+     
+     TOH(n-1, src, dest, helper);
+     System.out.println("transfer disk " + n + " from " + src + " to " + dest);
+     TOH(n-1, helper, src, dest);
+   }
     public static void main(String[] args) {
         
         int arr[] ={3,2,4,5,6,2,7,2,2};
         int key = 2;
-        System.out.println(length("helloooo", 0));
+        // System.out.println(length("helloooo", 0));
+        int n = 3;
+        TOH(n, "s", "h", "d");
     };
 }
