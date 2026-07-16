@@ -7,7 +7,7 @@ public class duplicateBrackets {
 
         for(int i=0; i<str.length(); i++){
             char ch = str.charAt(i);
-            //opening
+            //closing
             if(ch == ')'){
                 int count =0;
                 while (s.pop() != '(') {
