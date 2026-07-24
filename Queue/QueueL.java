@@ -1,30 +1,32 @@
-import java.util.*;
+package Queue;
 
-public class QueueB {
-    static class Queue{
-        static int arr[];
-        static int size;
-        static int rear;
+public class QueueL {
+    static class Node{
+        int data ;
+        Node next;
 
-        Queue(int n){
-            arr = new int[n];
-            size = n;
-            rear = -1;
+        Node(int data){
+            this.data = data;
+            this.next = null;
         }
+    }
+    static class Queue{
+        static Node head = null;
+        static Node tail = null;
 
         public static boolean isEmpty(){
-            return rear == -1;
+            return head == null && tail == null;
         }
 
         //add 
         public static void add(int data){
-            if(rear == size-1){
-                System.out.println("queue is full");
+             Node newNode = new Node(data);
+             if (head == null) {
+                head = tail = newNode;
                 return;
-            }
-
-            rear = rear +1;
-            arr[rear] = data;
+             }
+             tail.next = newNode;
+             tail = newNode;
         }
 
         //remove
@@ -34,11 +36,13 @@ public class QueueB {
                 return -1;
             }
 
-            int front = arr[0];
-            for(int i = 0 ; i<rear ; i++){
-                arr[i] = arr[i+1];
+            int front = head.data;
+            //single element
+            if(tail == head){
+                tail = head = null;
+            } else{
+                head = head.next;
             }
-            rear = rear -1;
             return front;
         }
 
@@ -49,13 +53,11 @@ public class QueueB {
                 return -1;
             }
 
-            return arr[0];
+            return head.data;
         }
     }
     public static void main(String[] args) {
-        Queue q = new Queue(5);
-        // Queue<Integer> q = new LinkedList<>();
-        // Queue<Integer> q = new ArrayDeque<>();
+        Queue q = new Queue();
         q.add(1);
         q.add(2);
         q.add(3);
@@ -66,5 +68,4 @@ public class QueueB {
         }
 
     }
-    
 }
