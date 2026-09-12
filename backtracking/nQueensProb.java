@@ -61,7 +61,7 @@ public class nQueensProb {
             }
         }
 
-        nQueens(board, 0);
+        nQueens(board, 6);
         System.out.println("Total ways to solve n-Queens = " + count);
     }
 }
